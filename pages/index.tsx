@@ -3,8 +3,9 @@ import { useAppSelector } from "@/store/hooks";
 import { Goal } from "@/types/types";
 import { onValue, ref, set } from "firebase/database";
 import Head from "next/head";
-import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import chad from "../assets/chad.jpeg";
 
 export default function Home() {
   const goalsRef = ref(db, "goals");
@@ -72,7 +73,14 @@ export default function Home() {
               Set Goal
             </button>
           </div>
-          <div className="bg-[#1a1a1a] w-[25%] h-[70%] z-10"></div>
+          <div className="bg-[#1a1a1a] w-[25%] h-[70%] z-10 flex flex-col items-center gap-[2rem]">
+            <div className="mt-[-2rem] mx-auto w-fit">
+              <Image src={chad} alt="" />
+            </div>
+            <p className="text-gray-300 w-[10rem]">
+              " Achieve Your Goals be an Absolute Chad "
+            </p>
+          </div>
           <div className="absolute top-0 right-0 h-full w-[27%] bg-[#d95d37]"></div>
         </section>
 
@@ -104,8 +112,8 @@ export default function Home() {
               </div>
             </div>
           ) : !user.email ? (
-            <div>
-              <p>Login to post your goal</p>
+            <div className="p-[3rem]">
+              <p className="text-center text-xl">Login to Share your goal</p>
             </div>
           ) : (
             <div className="p-[3rem] bg-[#f6eade]">

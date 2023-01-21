@@ -30,6 +30,8 @@ export default function Navbar() {
   useEffect(() => {
     const userRes = localStorage.getItem("user") || "";
 
+    if (userRes === "") return;
+
     dispatch(setUser(JSON.parse(userRes)));
   }, []);
 
@@ -41,16 +43,19 @@ export default function Navbar() {
 
       <ul className="flex gap-5 text-gray-600">
         <li>
-          <a href="/">Home</a>
+          <Link href="/">Home</Link>
         </li>
         <li>
-          <a href="/">About</a>
+          <Link href="/">About</Link>
         </li>
         <li>
-          <a href="/">Set Goal</a>
+          <Link href="/">Set Goal</Link>
         </li>
         <li>
-          <a href="/">View Goals</a>
+          <Link href="/">View Goals</Link>
+        </li>
+        <li>
+          <Link href="/exercise">Exercise</Link>
         </li>
       </ul>
       {user.email ? (
@@ -66,7 +71,7 @@ export default function Navbar() {
         </div>
       ) : (
         <button
-          className="p-1 bg-black text-white"
+          className="py-2 px-8 bg-[#1a1a1a] text-white z-10"
           onClick={() => handleJoin()}
         >
           Login
