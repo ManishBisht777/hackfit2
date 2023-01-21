@@ -1,17 +1,38 @@
 import { db } from "@/firebase/firebase";
 import { onValue, ref } from "firebase/database";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+interface Comment {
+  userName: string;
+  comment: string;
+  photoUrl: string;
+}
+
+interface Goal {
+  name: string;
+  description: string;
+  // steps:Array<string> | null,
+  comments: Array<Comment> | null;
+}
 
 export default function Home() {
-  const [goals, setGoals] = useState();
+  const [goals, setGoals] = useState<unknown>([]);
 
   const goalsRef = ref(db, "goals");
-  onValue(goalsRef, (snapshot) => {
-    const data = snapshot.val();
-    console.log(data);
-  });
 
+  useEffect(() => {
+    onValue(goalsRef, (snapshot) => {
+      const data = snapshot.val();
+      let goalRes = [];
+      for (let value of Object.values(data)) {
+        goalRes.push(value);
+      }
+      setGoals(goalRes);
+    });
+  }, []);
+
+  console.log(goals);
   return (
     <>
       <Head>
@@ -20,7 +41,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-screen"></main>
+      <main className="min-h-screen">
+        {goals &&
+          goals.map((goal: Goal, index: number) => {
+            console.log(goal);
+            return (
+              <div key={index}>
+                <p>{goal.name}</p>
+                <p>{goal.description}</p>
+              </div>
+            );
+          })}
+      </main>
     </>
   );
 }
