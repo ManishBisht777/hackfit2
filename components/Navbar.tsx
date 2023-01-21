@@ -33,7 +33,7 @@ export default function Navbar() {
     if (userRes === "") return;
 
     dispatch(setUser(JSON.parse(userRes)));
-  }, []);
+  }, [dispatch]);
 
   return (
     <nav className="absolute top-0 left-0 right-0 flex justify-between px-[4rem] py-[1.5rem] items-center">

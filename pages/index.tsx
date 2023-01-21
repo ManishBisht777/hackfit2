@@ -36,7 +36,7 @@ export default function Home() {
 
       setallGoals(goalArr);
     });
-  }, []);
+  }, [goalsRef]);
 
   useEffect(() => {
     if (!user.id) return;
@@ -51,7 +51,6 @@ export default function Home() {
     });
   }, [user]);
 
-  console.log(allGoals);
   return (
     <>
       <Head>
@@ -78,7 +77,7 @@ export default function Home() {
               <Image src={chad} alt="" />
             </div>
             <p className="text-gray-300 w-[10rem]">
-              " Achieve Your Goals be an Absolute Chad "
+              Achieve Your Goals be an Absolute Chad
             </p>
           </div>
           <div className="absolute top-0 right-0 h-full w-[27%] bg-[#d95d37]"></div>
@@ -156,7 +155,7 @@ export default function Home() {
                     <p className="text-[#d95d37] font-semibold">
                       {goal.user.userName}
                     </p>
-                    <p className="text-gray-300 italic">" {goal.name} "</p>
+                    <p className="text-gray-300 italic"> {goal.name} </p>
                   </div>
                 );
               })}

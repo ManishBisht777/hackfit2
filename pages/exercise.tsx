@@ -3,7 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "@/firebase/firebase";
 import Part from "@/components/part";
 
-export default function exercise() {
+export default function Exercise() {
   const [exercise, setExercise] = useState<any>([]);
 
   useEffect(() => {

@@ -6,10 +6,10 @@ export default function Part({ exercise }: any) {
   return (
     <div>
       {exercise &&
-        exercise.map((ex: any) => {
+        exercise.map((ex: any, index: number) => {
           console.log(ex);
           return (
-            <div className="">
+            <div className="" key={index}>
               <p className="text-xl text-[#d95d37] capitalize font-bold my-4">
                 {ex.name}
               </p>
