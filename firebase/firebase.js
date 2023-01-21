@@ -1,15 +1,17 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getDatabase } from "firebase/database";
+
+console.log(process.env.apiKey)
 const firebaseConfig = {
-    apiKey: "AIzaSyBnjK_Lbj7TG7VC5Bcq88rkuHCcBtf_T0E",
-    authDomain: "hackfit2.firebaseapp.com",
-    databaseURL: "https://hackfit2-default-rtdb.firebaseio.com",
-    projectId: "hackfit2",
-    storageBucket: "hackfit2.appspot.com",
-    messagingSenderId: "179553716573",
-    appId: "1:179553716573:web:d62b332b71d3e64646c0b4",
-    measurementId: "G-NF2CY20H95"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_apiKey,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_authDomain,
+    databaseURL: process.env.NEXT_PUBLIC_FIREBASE_databaseURL,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_projectId,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_storageBucket,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_messagingSenderId,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_appId,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_measurementId
 };
 
 const app = initializeApp(firebaseConfig);

@@ -34,20 +34,35 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-gray-300">
-      <p>Lorem ipsum dolor sit amet</p>
+    <nav className="absolute top-0 left-0 right-0 flex justify-between px-[4rem] py-[1.5rem] items-center">
+      <h1 className="text-gray-600 text-3xl font-bold flex ">
+        Goal <span className="text-[#d95d37] font-extrabold">To</span>Fit
+      </h1>
 
+      <ul className="flex gap-5 text-gray-600">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/">About</a>
+        </li>
+        <li>
+          <a href="/">Set Goal</a>
+        </li>
+        <li>
+          <a href="/">View Goals</a>
+        </li>
+      </ul>
       {user.email ? (
         <div>
-          <div className="bg-red-300">
-            <span>{user.userName}</span>
+          <div className="flex ">
             <img
-              className="rounded-full"
+              className="rounded-full w-[2.5rem] z-10"
               src={user.photoUrl ? user.photoUrl : ""}
               alt=""
             />
           </div>
-          <Link href={`/${user?.id}`}> Set Yor Goal</Link>
+          {/* <Link href={`/${user?.id}`}> Set Yor Goal</Link> */}
         </div>
       ) : (
         <button

@@ -1,10 +1,5 @@
+import { AuthState } from "@/types/types";
 import { createSlice } from "@reduxjs/toolkit";
-interface AuthState {
-  email: string;
-  userName: string;
-  id: string;
-  photoUrl: string;
-}
 
 const initialState: AuthState = {
   email: "",
