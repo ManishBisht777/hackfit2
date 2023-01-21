@@ -115,18 +115,30 @@ export default function Home() {
               <p className="text-center text-xl">Login to Share your goal</p>
             </div>
           ) : (
-            <div className="p-[3rem] bg-[#f6eade]">
-              <input
-                onChange={(e) => setGoalName(e.target.value)}
-                type="text"
-                placeholder="Goal"
-              />
-              <input
-                onChange={(e) => setGoalDesc(e.target.value)}
-                type="text"
-                placeholder="description"
-              />
-              <button onClick={() => writeGoal()}>Post</button>
+            <div className="p-[3rem] bg-[#f6eade] flex flex-col gap-[1rem] items-center">
+              <h2 className="text-gray-800 text-2xl text-center font-bold">
+                Share Your Goal
+              </h2>
+              <div className="flex flex-col gap-3 w-[30%]">
+                <input
+                  onChange={(e) => setGoalName(e.target.value)}
+                  type="text"
+                  placeholder="Goal"
+                  className="border px-4 py-2 border-[#1a1a1a] rounded-sm"
+                />
+                <input
+                  onChange={(e) => setGoalDesc(e.target.value)}
+                  type="text"
+                  placeholder="description"
+                  className="border px-4 py-2 border-[#1a1a1a] rounded-sm"
+                />
+                <button
+                  className="w-fit text-[#f6eade] self-center px-10 py-2 bg-[#1a1a1a] rounded-sm"
+                  onClick={() => writeGoal()}
+                >
+                  Post
+                </button>
+              </div>
             </div>
           )}
         </section>
@@ -139,7 +151,7 @@ export default function Home() {
             See what other people want to achieve and give them some tips to
             achieve that goal
           </p>
-          <div className="flex flex-wrap mt-[1rem]">
+          <div className="flex flex-wrap mt-[1rem] gap-4">
             {allGoals &&
               allGoals.map((goal: Goal) => {
                 return (
