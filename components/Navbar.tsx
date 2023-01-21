@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { User, signInWithPopup } from "firebase/auth";
 import { auth, providor } from "../firebase/firebase";
+import Link from "next/link";
 
-export default function Navbar() {
-  const [user, setUser] = useState<User>();
+interface authProp {
+  user: User | undefined;
+  setUser: (value: User) => void;
+}
 
+export default function Navbar({ user, setUser }: authProp) {
   const handleJoin = async () => {
     signInWithPopup(auth, providor)
       .then((result) => {
@@ -20,6 +24,8 @@ export default function Navbar() {
   return (
     <nav>
       <p>Lorem ipsum dolor sit amet</p>
+
+      <Link href={`/${user?.uid}`}> Set Yor Goal</Link>
 
       {user ? (
         <div>

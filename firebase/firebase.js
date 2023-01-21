@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 const firebaseConfig = {
     apiKey: "AIzaSyBnjK_Lbj7TG7VC5Bcq88rkuHCcBtf_T0E",
     authDomain: "hackfit2.firebaseapp.com",
@@ -14,4 +15,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const providor = new GoogleAuthProvider();
 const auth = getAuth();
-export { app, providor, auth }
+const db = getDatabase();
+export { app, providor, auth, db }
