@@ -19,12 +19,7 @@ export default function Navbar() {
 
   return (
     <nav>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, aliquam
-        recusandae. Saepe, doloribus. Minima nemo, dignissimos neque
-        exercitationem veritatis aliquid porro? Molestiae excepturi molestias ex
-        reprehenderit tempore commodi laudantium illum?
-      </p>
+      <p>Lorem ipsum dolor sit amet</p>
 
       {user ? (
         <div>
