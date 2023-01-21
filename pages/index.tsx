@@ -1,41 +1,26 @@
 import { db } from "@/firebase/firebase";
-import { User } from "firebase/auth";
+import { useAppSelector } from "@/store/hooks";
 import { onValue, ref } from "firebase/database";
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
-interface Comment {
-  userName: string;
-  comment: string;
-  photoUrl: string;
-}
-
-interface Goal {
-  name: string;
-  description: string;
-  // steps:Array<string> | null,
-  user: User;
-  comments: Array<Comment> | null;
-}
+import { useEffect } from "react";
 
 export default function Home() {
-  const [goals, setGoals] = useState<unknown>([]);
-
   const goalsRef = ref(db, "goals");
+  const user = useAppSelector((state) => state.auth);
 
-  // useEffect(() => {
-  //   onValue(goalsRef, (snapshot) => {
-  //     const data = snapshot.val();
-  //     let goalRes = [];
-  //     for (let value of Object.values(data)) {
-  //       goalRes.push(value);
-  //     }
-  //     setGoals(goalRes);
-  //   });
-  // }, []);
+  useEffect(() => {
+    onValue(goalsRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
+      if (data) {
+        for (let value of Object.values(data)) {
+          console.log(value);
+        }
+      }
+    });
+  }, []);
 
-  console.log(goals);
   return (
     <>
       <Head>
@@ -44,7 +29,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-screen">
+      <main className="min-h-screen bg-[#fff9eb]">
         {/* {goals &&
           goals.map((goal: Goal, index: number) => {
             return (
@@ -54,6 +39,13 @@ export default function Home() {
               </Link>
             );
           })} */}
+
+        <section>
+          <div>
+            <h1>Transform </h1>
+          </div>
+          <img src="" alt="" />
+        </section>
       </main>
     </>
   );
